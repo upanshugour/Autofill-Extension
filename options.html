@@ -1,0 +1,44 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Autofill profile</title><style>
+  body { max-width: 640px; margin: 32px auto; padding: 0 20px; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color: #1b2433; background: #f7f8fa; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 16px; margin: 32px 0 12px; padding-top: 16px; border-top: 1px solid #d9dde5; }
+  p.hint { margin: 0 0 16px; color: #5a667d; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  .full { grid-column: 1 / -1; }
+  label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  input[type=text], input[type=email], input[type=password], select, textarea { width: 100%; box-sizing: border-box; padding: 8px 10px; font: inherit; border: 1px solid #c3c9d6; border-radius: 6px; background: #fff; }
+  textarea { min-height: 150px; resize: vertical; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible { outline: 2px solid #1f4fd8; outline-offset: 1px; }
+  .check { display: flex; gap: 8px; align-items: center; font-weight: 400; }
+  button { padding: 10px 18px; font: inherit; font-weight: 600; border: 0; border-radius: 6px; background: #1f4fd8; color: #fff; cursor: pointer; }
+  #saved { margin-left: 12px; color: #2f7d4f; font-size: 14px; }
+  @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+</style></head><body>
+  <h1>Your profile</h1>
+  <p class="hint">Stored only in this browser. Nothing is submitted for you.</p>
+
+  <h2>Basics</h2>
+  <div class="grid" id="basics"></div>
+
+  <h2>Application answers</h2>
+  <div class="grid" id="answers"></div>
+
+  <h2>Background for Claude</h2>
+  <p class="hint">Paste your resume text, work history, and anything you'd want in an answer. Claude only uses what's written here and skips questions it can't answer from it.</p>
+  <textarea id="background"></textarea>
+
+  <h2>Resume file</h2>
+  <p class="hint" id="resumeName">No file saved.</p>
+  <input type="file" id="resume" accept=".pdf,.doc,.docx">
+
+  <h2>Claude API</h2>
+  <p class="hint">Optional. Needed only to draft open-ended answers. Get a key at console.anthropic.com.</p>
+  <div class="grid">
+    <div class="full"><label for="apiKey">API key</label><input type="password" id="apiKey" autocomplete="off"></div>
+    <div class="full"><label for="model">Model</label><input type="text" id="model" placeholder="claude-sonnet-5-5"></div>
+  </div>
+
+  <p style="margin-top:28px"><button id="save">Save profile</button><span id="saved"></span></p>
+  <script src="options.js"></script>
+</body></html>
